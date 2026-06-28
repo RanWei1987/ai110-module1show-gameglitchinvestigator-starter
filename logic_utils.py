@@ -1,3 +1,22 @@
+import random
+
+
+def make_new_game_state(low: int, high: int):
+    """
+    Return a fresh game-state dict for starting a new game.
+
+    Every value the game tracks is reset here. In particular ``status`` is
+    set back to ``"playing"`` so a finished ("won"/"lost") game can restart.
+    """
+    return {
+        "secret": random.randint(low, high),
+        "attempts": 0,
+        "score": 0,
+        "status": "playing",
+        "history": [],
+    }
+
+
 def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
     if difficulty == "Easy":

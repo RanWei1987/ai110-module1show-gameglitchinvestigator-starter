@@ -6,6 +6,7 @@ from logic_utils import (
     parse_guess,
     check_guess,
     update_score,
+    make_new_game_state,
 )
 
 st.set_page_config(page_title="Glitchy Guesser", page_icon="🎮")
@@ -76,11 +77,8 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 # FIXED: New Game button resets the game
 if new_game:
-    st.session_state.attempts = 0
-    st.session_state.secret = random.randint(low, high)
-    st.session_state.score = 0
-    st.session_state.status = "playing"
-    st.session_state.history = []
+    for key, value in make_new_game_state(low, high).items():
+        st.session_state[key] = value
     st.success("New game started.")
     st.rerun()
 
