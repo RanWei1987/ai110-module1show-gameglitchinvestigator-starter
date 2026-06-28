@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m py_compile \"//wsl.localhost/Ubuntu/home/rwei/CodePath/Week2/ai110-module1show-gameglitchinvestigator-starter/logic_utils.py\" \"//wsl.localhost/Ubuntu/home/rwei/CodePath/Week2/ai110-module1show-gameglitchinvestigator-starter/app.py\")"
+    ]
+  }
+}
