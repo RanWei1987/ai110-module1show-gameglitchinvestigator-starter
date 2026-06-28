@@ -5,6 +5,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 1. What was broken when you started?
 
 - What did the game look like the first time you ran it?
+It is a guesser game. The gamer types in a number and the game gives hint if this input is larger or smaller than the correct answer. The user adjusts the guess accordingly and the goal is to get the correct within the number of attempts allowed.   
 
 - List at least two concrete bugs you noticed at the start  
 The hints were backwards.  
