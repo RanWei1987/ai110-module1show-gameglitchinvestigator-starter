@@ -68,6 +68,7 @@ raw_guess = st.text_input(
     key=f"guess_input_{difficulty}"
 )
 # CRIME SCENE: New Game button does not reset the game
+# Fixed: New Game button resets the game, using agent mode
 col1, col2, col3 = st.columns(3)
 with col1:
     submit = st.button("Submit Guess 🚀")
@@ -75,7 +76,6 @@ with col2:
     new_game = st.button("New Game 🔁")
 with col3:
     show_hint = st.checkbox("Show hint", value=True)
-# FIXED: New Game button resets the game
 if new_game:
     for key, value in make_new_game_state(low, high).items():
         st.session_state[key] = value
@@ -94,7 +94,8 @@ if submit:
 
     ok, guess_int, err = parse_guess(raw_guess)
 # CRIME SCENE: Easy mode, serect is 2, looping between being suggested going lower at 13, but higher at 12
-# FIXED: Easy mode, secret is 2, looping between being suggested going lower at 13, but higher at 12
+# FIXED: Easy mode, secret is 2, looping between being suggested going lower at 13, but higher at 12, using agent mode
+# Second round of fix: the problem was with the check_guess function, which was comparing the guess to the secret as strings instead of integers. This caused the comparison to be incorrect and resulted in opposite hints being given. The fix was to convert both the guess and secret to integers before comparing them.
     if not ok:
         st.session_state.history.append(raw_guess)
         st.error(err)

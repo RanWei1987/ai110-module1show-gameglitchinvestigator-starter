@@ -1,6 +1,6 @@
 import random
 
-
+# FIXED: Refactored logic into logic_utils.py using agent mode
 def make_new_game_state(low: int, high: int):
     """
     Return a fresh game-state dict for starting a new game.
@@ -50,7 +50,10 @@ def parse_guess(raw: str):
 
     return True, value, None
 
-
+# CRIME SCENE: Opposite hints
+# FIXED: Opposite hints, using agent mode
+# But the problem remained with Easy mode, serect is 2, looping between being suggested going lower at 13, but higher at 12
+# Seeked for a second round of fix and found that the problem was with the check_guess function, which was comparing the guess to the secret as strings instead of integers. This caused the comparison to be incorrect and resulted in opposite hints being given. The fix was to convert both the guess and secret to integers before comparing them.
 def check_guess(guess, secret):
     """
     Compare guess to secret and return (outcome, message).
